@@ -1,0 +1,340 @@
+* CLASS lcl_alv_event_handler DEFINITION DEFERRED.
+*----------------------------------------------------------------------*
+*       CLASS lcl_alv_event_handler DEFINITION
+*----------------------------------------------------------------------*
+* Beschreibung: |
+*----------------------------------------------------------------------*
+CLASS lcl_alv_event_handler DEFINITION.
+
+  PUBLIC SECTION.
+    METHODS:
+  handle_onf1 FOR EVENT onf1 OF /zpl/cl_display_alv
+              IMPORTING
+                e_fieldname     " type LVC_FNAME optional
+                es_row_no       " type LVC_S_ROID optional
+                er_event_data     " type ref to CL_ALV_EVENT_DATA optional .
+                sender,
+  handle_onf4 FOR EVENT onf4 OF /zpl/cl_display_alv
+              IMPORTING
+                e_fieldname      " type LVC_FNAME optional
+                e_fieldvalue     " type LVC_VALUE optional
+                es_row_no        " type LVC_S_ROID optional
+                er_event_data    " type ref to CL_ALV_EVENT_DATA optional
+                et_bad_cells     " type LVC_T_MODI optional
+                e_display        " type CHAR01 optional .
+                sender,
+  handle_data_changed FOR EVENT data_changed OF /zpl/cl_display_alv
+                      IMPORTING
+                        er_data_changed     " type ref to CL_ALV_CHANGED_DATA_PROTOCOL optional
+                        e_onf4     " type CHAR01 optional
+                        e_onf4_before     " type CHAR01 optional
+                        e_onf4_after     " type CHAR01 optional
+                        e_ucomm     " type SY-UCOMM optional .
+                        sender,
+  handle_ondropgetflavor FOR EVENT ondropgetflavor OF /zpl/cl_display_alv
+                         IMPORTING
+                           e_row        " type LVC_S_ROW optional
+                           e_column     " type LVC_S_COL optional
+                           es_row_no    " type LVC_S_ROID optional
+                           e_dragdropobj" type ref to CL_DRAGDROPOBJECT optional
+                           e_flavors    " type CNDD_FLAVORS optional .
+                           sender,
+  handle_ondrag FOR EVENT ondrag OF /zpl/cl_display_alv
+                IMPORTING
+                  e_row        " type LVC_S_ROW optional
+                  e_column     " type LVC_S_COL optional
+                  es_row_no    " type LVC_S_ROID optional
+                  e_dragdropobj" type ref to CL_DRAGDROPOBJECT optional .
+                  sender,
+  handle_ondrop FOR EVENT ondrop OF /zpl/cl_display_alv
+                IMPORTING
+                  e_row         " type LVC_S_ROW optional
+                  e_column      " type LVC_S_COL optional
+                  es_row_no     " type LVC_S_ROID optional
+                  e_dragdropobj " type ref to CL_DRAGDROPOBJECT optional .
+                  sender,
+  handle_ondropcomplete FOR EVENT ondropcomplete OF /zpl/cl_display_alv
+                        IMPORTING
+                          e_row     " type LVC_S_ROW optional
+                          e_column     " type LVC_S_COL optional
+                          es_row_no     " type LVC_S_ROID optional
+                          e_dragdropobj     " type ref to CL_DRAGDROPOBJECT optional .
+                          sender,
+  handle_subtotal_text FOR EVENT subtotal_text OF /zpl/cl_display_alv
+                       IMPORTING
+                         es_subtottxt_info     " type LVC_S_STXT optional
+                         ep_subtot_line     " type ref to DATA optional
+                         e_event_data     " type ref to CL_ALV_EVENT_DATA optional .
+                         sender,
+  handle_before_user_command FOR EVENT before_user_command OF /zpl/cl_display_alv
+                             IMPORTING
+                               e_ucomm     " type SY-UCOMM optional .
+                               sender,
+  handle_user_command FOR EVENT user_command OF /zpl/cl_display_alv
+                      IMPORTING
+                        e_ucomm     " type SY-UCOMM optional .
+                        sender,
+  handle_after_user_command FOR EVENT after_user_command OF /zpl/cl_display_alv
+                            IMPORTING
+                              e_ucomm     " type SY-UCOMM optional
+                              e_saved     " type CHAR01 optional
+                              e_not_processed     " type CHAR01 optional .
+                              sender,
+  handle_double_click FOR EVENT double_click OF /zpl/cl_display_alv
+                      IMPORTING
+                        e_row     " type LVC_S_ROW optional
+                        e_column     " type LVC_S_COL optional
+                        es_row_no     " type LVC_S_ROID optional .
+                        sender,
+  handle_delayed_callback FOR EVENT delayed_callback OF /zpl/cl_display_alv
+                          IMPORTING
+                            sender,
+  handle_delayed_chnd_sel_call FOR EVENT delayed_changed_sel_callback OF /zpl/cl_display_alv
+                               IMPORTING
+                                  sender,
+  handle_print_top_of_page FOR EVENT print_top_of_page OF /zpl/cl_display_alv
+                           IMPORTING
+                             table_index     " type SYINDEX optional .
+                             sender,
+  handle_print_top_of_list FOR EVENT print_top_of_list OF /zpl/cl_display_alv
+                           IMPORTING
+                             sender,
+  handle_print_end_of_page FOR EVENT print_end_of_page OF /zpl/cl_display_alv
+                           IMPORTING
+                             sender,
+  handle_print_end_of_list FOR EVENT print_end_of_list OF /zpl/cl_display_alv
+                           IMPORTING
+                             sender,
+  handle_top_of_page FOR EVENT top_of_page OF /zpl/cl_display_alv
+                     IMPORTING
+                       e_dyndoc_id     " type ref to CL_DD_DOCUMENT optional
+                       table_index     " type SYINDEX optional .
+                       sender,
+  handle_context_menu_request FOR EVENT context_menu_request OF /zpl/cl_display_alv
+                              IMPORTING
+                                e_object     " type ref to CL_CTMENU optional .
+                                sender,
+  handle_menu_button FOR EVENT menu_button OF /zpl/cl_display_alv
+                     IMPORTING
+                       e_object     " type ref to CL_CTMENU optional
+                       e_ucomm      " type SY-UCOMM optional .
+                       sender,
+  handle_toolbar FOR EVENT toolbar OF /zpl/cl_display_alv
+                 IMPORTING
+                   e_object          " type ref to CL_ALV_EVENT_TOOLBAR_SET optional
+                   e_interactive     " type CHAR01 optional .
+                   sender,
+  handle_hotspot_click FOR EVENT hotspot_click OF /zpl/cl_display_alv
+                       IMPORTING
+                         e_row_id      " type LVC_S_ROW optional
+                         e_column_id   " type LVC_S_COL optional
+                         es_row_no     " type LVC_S_ROID optional .
+                         sender,
+  handle_end_of_list FOR EVENT end_of_list OF /zpl/cl_display_alv
+                     IMPORTING
+                       e_dyndoc_id     " type ref to CL_DD_DOCUMENT optional .
+                       sender,
+  handle_after_refresh FOR EVENT after_refresh OF /zpl/cl_display_alv
+                       IMPORTING
+                        sender,
+  handle_button_click FOR EVENT button_click OF /zpl/cl_display_alv
+                      IMPORTING
+                        es_col_id     " type LVC_S_COL optional
+                        es_row_no     " type LVC_S_ROID optional .
+                        sender,
+  handle_data_changed_finished FOR EVENT data_changed_finished OF /zpl/cl_display_alv
+                               IMPORTING
+                                 e_modified     " type CHAR01 optional
+                                 et_good_cells  " type LVC_T_MODI optional .
+                                 sender,
+  handle_drop_external_files FOR EVENT drop_external_files OF /zpl/cl_display_alv
+                             IMPORTING
+                               files     " type STRING
+                               sender.
+
+**********************************************************************
+  PROTECTED SECTION.
+
+**********************************************************************
+  PRIVATE SECTION.
+
+ENDCLASS.                    "lcl_alv_event_handler DEFINITION
+
+*----------------------------------------------------------------------*
+*       CLASS lcl_alv_event_handler IMPLEMENTATION
+*----------------------------------------------------------------------*
+*
+*----------------------------------------------------------------------*
+CLASS lcl_alv_event_handler IMPLEMENTATION.
+  METHOD handle_onf1 .     "FOR EVENT onf1 OF /zpl/cl_display_alv
+  "IMPORTING
+  "e_fieldname     " type LVC_FNAME optional
+  "es_row_no       " type LVC_S_ROID optional
+  "er_event_data     " type ref to CL_ALV_EVENT_DATA optional .
+  "sender,
+  ENDMETHOD.
+  METHOD handle_onf4 .     "FOR EVENT onf4 OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_fieldname      " type LVC_FNAME optional
+    "e_fieldvalue     " type LVC_VALUE optional
+    "es_row_no        " type LVC_S_ROID optional
+    "er_event_data    " type ref to CL_ALV_EVENT_DATA optional
+    "et_bad_cells     " type LVC_T_MODI optional
+    "e_display        " type CHAR01 optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_data_changed .     "FOR EVENT data_changed OF /zpl/cl_display_alv
+    "IMPORTING
+    "er_data_changed     " type ref to CL_ALV_CHANGED_DATA_PROTOCOL optional
+    "e_onf4     " type CHAR01 optional
+    "e_onf4_before     " type CHAR01 optional
+    "e_onf4_after     " type CHAR01 optional
+    "e_ucomm     " type SY-UCOMM optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_ondropgetflavor .     "FOR EVENT ondropgetflavor OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_row        " type LVC_S_ROW optional
+    "e_column     " type LVC_S_COL optional
+    "es_row_no    " type LVC_S_ROID optional
+    "e_dragdropobj" type ref to CL_DRAGDROPOBJECT optional
+    "e_flavors    " type CNDD_FLAVORS optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_ondrag .     "FOR EVENT ondrag OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_row        " type LVC_S_ROW optional
+    "e_column     " type LVC_S_COL optional
+    "es_row_no    " type LVC_S_ROID optional
+    "e_dragdropobj" type ref to CL_DRAGDROPOBJECT optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_ondrop .     "FOR EVENT ondrop OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_row         " type LVC_S_ROW optional
+    "e_column      " type LVC_S_COL optional
+    "es_row_no     " type LVC_S_ROID optional
+    "e_dragdropobj " type ref to CL_DRAGDROPOBJECT optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_ondropcomplete .     "FOR EVENT ondropcomplete OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_row     " type LVC_S_ROW optional
+    "e_column     " type LVC_S_COL optional
+    "es_row_no     " type LVC_S_ROID optional
+    "e_dragdropobj     " type ref to CL_DRAGDROPOBJECT optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_subtotal_text .     "FOR EVENT subtotal_text OF /zpl/cl_display_alv
+    "IMPORTING
+    "es_subtottxt_info     " type LVC_S_STXT optional
+    "ep_subtot_line     " type ref to DATA optional
+    "e_event_data     " type ref to CL_ALV_EVENT_DATA optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_before_user_command .     "FOR EVENT before_user_command OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_ucomm     " type SY-UCOMM optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_user_command .     "FOR EVENT user_command OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_ucomm     " type SY-UCOMM optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_after_user_command .     "FOR EVENT after_user_command OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_ucomm     " type SY-UCOMM optional
+    "e_saved     " type CHAR01 optional
+    "e_not_processed     " type CHAR01 optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_double_click .     "FOR EVENT double_click OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_row     " type LVC_S_ROW optional
+    "e_column     " type LVC_S_COL optional
+    "es_row_no     " type LVC_S_ROID optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_delayed_callback .     "FOR EVENT delayed_callback OF /zpl/cl_display_alv
+    "IMPORTING
+    "sender,
+  ENDMETHOD.
+  METHOD handle_delayed_chnd_sel_call .     "FOR EVENT delayed_changed_sel_callback OF /zpl/cl_display_alv
+    "IMPORTING
+    "sender,
+  ENDMETHOD.
+  METHOD handle_print_top_of_page .     "FOR EVENT print_top_of_page OF /zpl/cl_display_alv
+    "IMPORTING
+    "table_index     " type SYINDEX optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_print_top_of_list .     "FOR EVENT print_top_of_list OF /zpl/cl_display_alv
+    "IMPORTING
+    "sender,
+  ENDMETHOD.
+  METHOD handle_print_end_of_page .     "FOR EVENT print_end_of_page OF /zpl/cl_display_alv
+    "IMPORTING
+    "sender,
+  ENDMETHOD.
+  METHOD handle_print_end_of_list .     "FOR EVENT print_end_of_list OF /zpl/cl_display_alv
+    "IMPORTING
+    "sender,
+  ENDMETHOD.
+  METHOD handle_top_of_page .     "FOR EVENT top_of_page OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_dyndoc_id     " type ref to CL_DD_DOCUMENT optional
+    "table_index     " type SYINDEX optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_context_menu_request .     "FOR EVENT context_menu_request OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_object     " type ref to CL_CTMENU optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_menu_button .     "FOR EVENT menu_button OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_object     " type ref to CL_CTMENU optional
+    "e_ucomm      " type SY-UCOMM optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_toolbar .     "FOR EVENT toolbar OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_object          " type ref to CL_ALV_EVENT_TOOLBAR_SET optional
+    "e_interactive     " type CHAR01 optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_hotspot_click .     "FOR EVENT hotspot_click OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_row_id      " type LVC_S_ROW optional
+    "e_column_id   " type LVC_S_COL optional
+    "es_row_no     " type LVC_S_ROID optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_end_of_list .     "FOR EVENT "end_of_list OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_dyndoc_id     " type ref to CL_DD_DOCUMENT optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_after_refresh .     "FOR EVENT after_refresh OF /zpl/cl_display_alv
+    "IMPORTING
+    "sender,
+  ENDMETHOD.
+  METHOD handle_button_click .     "FOR EVENT button_click OF /zpl/cl_display_alv
+    "IMPORTING
+    "es_col_id     " type LVC_S_COL optional
+    "es_row_no     " type LVC_S_ROID optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_data_changed_finished .     "FOR EVENT data_changed_finished OF /zpl/cl_display_alv
+    "IMPORTING
+    "e_modified     " type CHAR01 optional
+    "et_good_cells  " type LVC_T_MODI optional .
+    "sender,
+  ENDMETHOD.
+  METHOD handle_drop_external_files .     "FOR EVENT drop_external_files OF /zpl/cl_display_alv
+    "IMPORTING
+    " files     " type STRING
+    "  sender.
+  ENDMETHOD.
+ENDCLASS.                    "lcl_alv_event_handler IMPLEMENTATION
