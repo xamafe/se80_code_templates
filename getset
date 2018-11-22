@@ -1,2 +1,2 @@
-get_%Clipboard% RETURNING value(rv_%Clipboard%) TYPE |,
-    set_%Clipboard% IMPORTING iv_%Clipboard%        TYPE ,
+get_%attribute% RETURNING value(rv_%attribute%) TYPE %DDICTYPE%,
+set_%attribute% IMPORTING iv_%attribute%        TYPE %DDICTYPE%,
