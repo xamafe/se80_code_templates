@@ -1,0 +1,39 @@
+**********************************************************************
+* Typepools obsolet ab Release 7.0 EhP 2
+* TYPE-POOLS: ABAP, icon.
+
+**********************************************************************
+*Tables - obsolet in ABAP OO - nur für SelScreen
+* TABLES: sscrfields.
+
+**********************************************************************
+*TYPES - Definitionen
+
+**********************************************************************
+* Prototyping von Klassen
+
+
+**********************************************************************
+* globale Datendeklarationen
+DATA:
+* Tabellen
+
+* Ranges
+
+* Strukturen
+
+* Variablen
+
+* Referenzen
+
+* Dummy
+  dummy."#EC NEEDED  "Wird nicht benutzt!
+
+**********************************************************************
+* Feldsymbole
+*FIELD-SYMBOLS: .
+
+**********************************************************************
+* Makros
+*DEFINE .
+*END-OF-DEFINITION.
