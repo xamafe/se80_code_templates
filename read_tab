@@ -1,0 +1,4 @@
+READ TABLE %Clipboard% ASSIGNING <|> ." WITH KEY .
+IF sy-subrc <> 0.
+  RETURN.
+ENDIF.
