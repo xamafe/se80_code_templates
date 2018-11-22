@@ -1,0 +1,2 @@
+get_%Clipboard% RETURNING value(rv_%Clipboard%) TYPE |,
+    set_%Clipboard% IMPORTING iv_%Clipboard%        TYPE ,
