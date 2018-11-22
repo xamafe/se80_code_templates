@@ -1,0 +1,13 @@
+*Screen 1000
+**********************************************************************
+*PARAMETERS: .
+*SELECT-OPTIONS: .
+*
+*SELECTION-SCREEN BEGIN OF BLOCK a WITH FRAME.
+*  
+*SELECTION-SCREEN END OF BLOCK a.
+
+*Subscreens
+**********************************************************************
+*SELECTION-SCREEN BEGIN OF SCREEN 9000.
+*SELECTION-SCREEN END OF SCREEN 9000.
